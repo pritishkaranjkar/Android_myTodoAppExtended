@@ -28,8 +28,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements EditItemActivity.EditItemActivityDialogListener{
 
     ArrayList<UpdateItem> todoItems;
-    //ArrayAdapter<String> aToDoAdapter;
-   // ListView lvItems;
     EditText etEditText;
 
     //ArrayList<TodoItem> todoItems;
@@ -45,16 +43,6 @@ public class MainActivity extends AppCompatActivity implements EditItemActivity.
      */
     private GoogleApiClient client;
 
-    /*public void populateArrayItems() {
-        todoItems = new ArrayList<String>();
-        todoItems.add("Item 1");
-        todoItems.add("Item 2");
-        todoItems.add("Item 3");
-        readItems();
-        aToDoAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, todoItems);
-
-    }
-*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,29 +101,6 @@ public class MainActivity extends AppCompatActivity implements EditItemActivity.
     }
 
 
-
-    /*private void readItems() {
-        File filesDir = getFilesDir();
-        File file = new File(filesDir, "todo.txt");
-        try {
-            todoItems = new ArrayList<String>(FileUtils.readLines(file));
-        } catch (IOException e) {
-            todoItems = new ArrayList<String>();
-        }
-    }
-
-
-    private void writeItems() {
-        File filesDir = getFilesDir();
-        File file = new File(filesDir, "todo.txt");
-        try {
-            FileUtils.writeLines(file, todoItems);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-*/
-
     @Override
     public void onFinishEditDialog(String inputText, String date) {
         selectedTodoItem.myItem = inputText;
@@ -144,21 +109,11 @@ public class MainActivity extends AppCompatActivity implements EditItemActivity.
         aToDoAdapter.notifyDataSetChanged();
     }
 
-   /* public void onFinishEditDialog(String inputText, Date date) {
-        selectedTodoItem.myItem = inputText;
-        selectedTodoItem.dt = date;
-        selectedTodoItem.save();
-        aToDoAdapter.notifyDataSetChanged();
-    }*/
-
     public void onAddItem(View view) {
         etEditText = (EditText) findViewById(R.id.etEditText);
-       UpdateItem newItem = new UpdateItem(etEditText.getText().toString(), DateFormat.getDateInstance().format(new Date()));
-        //UpdateItem newItem = new UpdateItem(etEditText.getText().toString(), new Date());
+        UpdateItem newItem = new UpdateItem(etEditText.getText().toString(), DateFormat.getDateInstance().format(new Date()));
         aToDoAdapter.add(newItem);
         newItem.save();
-        //etEditText.setText("");
-        //writeItems();
         etEditText.setText(R.string.new_item);
     }
 
@@ -202,26 +157,5 @@ public class MainActivity extends AppCompatActivity implements EditItemActivity.
         client.disconnect();
     }
 
-   /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-*/
+  
 }
