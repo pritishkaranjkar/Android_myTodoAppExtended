@@ -33,10 +33,9 @@ import java.util.Date;
 
 public class EditItemActivity extends DialogFragment implements OnEditorActionListener {
 
-    //EditText etEdittodoText;
+
     EditText etText;
     EditText etDT;
-   // DatePicker etDT;
     String Pos;
 
     public interface EditItemActivityDialogListener {
@@ -61,21 +60,11 @@ public class EditItemActivity extends DialogFragment implements OnEditorActionLi
         View view = inflater.inflate(R.layout.activity_edit_item, container);
         etText = (EditText) view.findViewById(R.id.editTodoName);
         etDT = (EditText) view.findViewById(R.id.editTodoDate);
-       // etDT = (DatePicker) view.findViewById(R.id.editTodoDate);
         etDT.setOnEditorActionListener(this);
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
-       /* etDT.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
-
-            @Override
-            public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                Log.d("Date", "Year=" + year + " Month=" + (month + 1) + " day=" + dayOfMonth);
-
-            }
-        });
-*/        String title = getArguments().getString("title", "Enter Name");
+        String title = getArguments().getString("title", "Enter Name");
         getDialog().setTitle(title);
-        // Show soft keyboard automatically
         etDT.requestFocus();
 
         getDialog().getWindow().setSoftInputMode(
@@ -108,15 +97,5 @@ public class EditItemActivity extends DialogFragment implements OnEditorActionLi
         }
         return false;
     }
-
-
-    /*public void onSubmitSave(View view) {
-        Intent item = new Intent();
-        item.putExtra("todoItems", etEdittodoText.getText().toString());
-        item.putExtra("position", Pos);
-        setResult(RESULT_OK, item);
-        finish();
-    }*/
-
 
 }
