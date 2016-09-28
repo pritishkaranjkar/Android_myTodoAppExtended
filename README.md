@@ -22,3 +22,5 @@ Additional user stories:
  * [x] (Suggested) Use a DialogFragment instead of new Activity for editing items
 
 A simple To do app that helps you track things. You can add an item, delete it after its done and edit an existing item. One can also store the to do date for the task
+
+![Video Walkthrough](mytodoExtended.gif)
